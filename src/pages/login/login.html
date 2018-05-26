@@ -20,37 +20,67 @@
   <ion-grid>
     <ion-row align-items-center>
       <ion-col><div></div></ion-col>
+
       <ion-col col-md-4 col-sm-6 col-10 center text-center>
-        <div class="row-div">
-          <img src="../../assets/imgs/logo.png" alt="" />
-        </div>
-        <div class="row-div">
-          <ion-item>
-            <ion-label color="primary"><ion-icon name="md-person"></ion-icon></ion-label>
-            <ion-input type="text" placeholder="Name@email.com"></ion-input>
-          </ion-item>
-        </div>
-        <div class="row-div">
-          <ion-item>
-            <ion-label color="primary"><ion-icon name="lock"></ion-icon></ion-label>
-            <ion-input type="password" placeholder="Password"></ion-input>
-          </ion-item>
-        </div>
-        <div class="row-div">
-          <ion-row>
-            <ion-col justify-content-end class='a-col'><a (click)="forgot()">Forgot password?</a></ion-col>
-          </ion-row>
-        </div>
-        <div class="row-div">
-          <button ion-button block outline color="lightText" (click)="login()" class="default-btn">Log in</button>
-        </div>
-        <div class="row-div">
-          <ion-row>
-            <ion-col justify-content-start class='lbl-col'>Don't have account?</ion-col>
-            <ion-col justify-content-end class='a-col'><a (click)="signup()">Sign up</a></ion-col>
-          </ion-row>
-        </div>
+        <form novalidate (ngSubmit)="login()" [formGroup]="loginform">
+          <div class="row-div">
+            <img src="../../assets/imgs/logo.png" alt="" />
+          </div>
+
+          <div class="row-div">
+            <ion-item>
+              <ion-label color="primary"><ion-icon name="md-person"></ion-icon></ion-label>
+              <!-- <ion-input type="text" placeholder="Name@email.com" formControlName="email" required></ion-input> -->
+              <ion-input type="text" [(ngModel)]="userData.email" placeholder="Name@email.com" formControlName="email" [class.error1]="!loginform.controls.email.valid && loginform.controls.email.dirty"></ion-input>
+            </ion-item>
+            <ion-item no-lines *ngIf="( loginform.get('email').hasError('minlength') || loginform.get('email').hasError('pattern') ||loginform.get('email').hasError('required') ) && loginform.get('email').touched">
+              <div class="error" *ngIf="loginform.get('email').hasError('required') && loginform.get('email').touched">
+                Please input your email
+              </div>
+              <div class="error" *ngIf="loginform.get('email').hasError('pattern') && loginform.get('email').touched">
+                Email address invalid
+              </div>
+            </ion-item>
+          </div>
+
+          <div class="row-div">
+            <ion-item>
+              <ion-label color="primary"><ion-icon name="lock"></ion-icon></ion-label>
+              <!-- <ion-input type="password" placeholder="Password" formControlName="password" required></ion-input> -->
+              <ion-input type="password" [(ngModel)]="userData.password" placeholder="Password" formControlName="password" [class.error1]="!loginform.controls.password.valid && loginform.controls.password.dirty"></ion-input>
+            </ion-item>
+            <ion-item no-lines *ngIf="( loginform.get('password').hasError('minlength') || loginform.get('password').hasError('maxlength') ||loginform.get('password').hasError('required') ) && loginform.get('password').touched">
+              <div class="error" *ngIf="loginform.get('password').hasError('required') && loginform.get('password').touched">
+                Please input your password
+              </div>
+              <div class="error" *ngIf="loginform.get('password').hasError('minlength') && loginform.get('password').touched">
+                Minimum 6 characters
+              </div>
+              <div class="error" *ngIf="loginform.get('password').hasError('maxlength') && loginform.get('password').touched">
+                Maximum 12 characters
+              </div>
+            </ion-item>
+          </div>
+
+          <div class="row-div">
+            <ion-row>
+              <ion-col justify-content-end class='a-col'><a (click)="forgot()">Forgot password?</a></ion-col>
+            </ion-row>
+          </div>
+
+          <div class="row-div">
+            <button ion-button block outline color="lightText" (click)="login()" class="default-btn">Log in</button>
+          </div>
+          
+          <div class="row-div">
+            <ion-row>
+              <ion-col justify-content-start class='lbl-col'>Don't have account?</ion-col>
+              <ion-col justify-content-end class='a-col'><a (click)="signup()">Sign up</a></ion-col>
+            </ion-row>
+          </div>
+        </form>
       </ion-col>
+
       <ion-col></ion-col>
     </ion-row>
   </ion-grid>
