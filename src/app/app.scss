@@ -14,3 +14,48 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+ion-content {
+    div.scroll-content {
+        display: flex!important;
+        align-content: center!important;
+        align-items: center!important;
+    }
+    
+    video {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        transform: translateX(-50%) translateY(-50%);
+    }
+    
+    div.row-div {
+        margin: 8px 0;
+
+        button.default-btn {
+            background: #488AFF !important;
+            color: #ffffff;
+        }
+        button.default-btn:hover {
+            background: #1B6DFF !important;
+        }
+        button.default-btn:active {
+            background: #1055CF !important;
+        }
+    }
+
+    div.logo-div {
+        margin-bottom: 25px;
+    }
+
+    ion-input {
+        background: white;
+        margin: 8px 0;
+        border: 1px solid #f8f8f8;
+    }
+}
