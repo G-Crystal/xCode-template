@@ -15,7 +15,18 @@
 -->
 
 <ion-content padding>
+  <video autoplay loop src="../../assets/imgs/background-video.mp4"></video>
+  
   <ion-grid >
+    <ion-grid >
+      <ion-row align-items-center>
+        <ion-col></ion-col>
+        <ion-col col-md-4 col-sm-6 col-10 center text-center>
+          <div><img src="../../assets/imgs/logo.png" alt="" /></div>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
     <ion-row align-items-center>
       <ion-col></ion-col>
       <ion-col col-md-4 col-sm-6 col-10 center text-center>
@@ -23,26 +34,26 @@
       </ion-col>
       <ion-col></ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row align-items-center>
       <ion-col></ion-col>
       <ion-col col-md-4 col-sm-6 col-10 center text-center>
         <ion-input type="password" placeholder="Password"></ion-input>
       </ion-col>
       <ion-col></ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row align-items-center>
       <ion-col></ion-col>
       <ion-col col-md-4 col-sm-6 col-10 center text-center>
         <button ion-button full color="success" (click)="signup()">Sign up</button>
       </ion-col>
       <ion-col></ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row align-items-center>
       <ion-col></ion-col>
       <ion-col col-md-4 col-sm-6 col-10 center text-center>
         <button ion-button full color="lightText" (click)="login()">Log in</button>
       </ion-col>
       <ion-col></ion-col>
     </ion-row>
-  </ion-grid>  
+  </ion-grid>
 </ion-content>
