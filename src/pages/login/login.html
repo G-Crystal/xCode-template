@@ -17,16 +17,46 @@
 <ion-content padding>
   <video autoplay loop src="../../assets/imgs/background-video.mp4"></video>
   
-  <ion-grid >
-    <ion-grid >
-      <ion-row align-items-center>
-        <ion-col></ion-col>
-        <ion-col col-md-4 col-sm-6 col-10 center text-center>
-          <div><img src="../../assets/imgs/logo.png" alt="" /></div>
-        </ion-col>
-        <ion-col></ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-grid>
+    <ion-row align-items-center>
+      <ion-col><div></div></ion-col>
+      <ion-col col-md-4 col-sm-6 col-10 center text-center>
+        <div class="row-div">
+          <img src="../../assets/imgs/logo.png" alt="" />
+        </div>
+        <div class="row-div">
+          <ion-input type="text" placeholder="Name@email.com"></ion-input>
+        </div>
+        <div class="row-div">
+          <ion-input type="password" placeholder="Password"></ion-input>
+        </div>
+        <div class="row-div">
+          <ion-row>
+            <ion-col justify-content-end class='a-col'><a (click)="forgot()">Forgot password?</a></ion-col>
+          </ion-row>
+        </div>
+        <div class="row-div">
+          <button ion-button full color="lightText" (click)="login()">Log in</button>
+        </div>
+        <div class="row-div">
+          <ion-row>
+            <ion-col justify-content-start class='lbl-col'>Don't have account?</ion-col>
+            <ion-col justify-content-end class='a-col'><a (click)="signup()">Sign up</a></ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+        
+  <!-- <ion-grid>
+    <ion-row align-items-center>
+      <ion-col></ion-col>
+      <ion-col col-md-4 col-sm-6 col-10 center text-center>
+        <div><img src="../../assets/imgs/logo.png" alt="" /></div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
     <ion-row align-items-center>
       <ion-col></ion-col>
       <ion-col col-md-4 col-sm-6 col-10 center text-center>
@@ -55,5 +85,5 @@
       </ion-col>
       <ion-col></ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
 </ion-content>
