@@ -1,17 +1,29 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+<!--
+  Generated template for the HomePage page.
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
-</ion-content>
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-content padding id="home">
+    <video autoplay loop src="../../assets/imgs/background-video.mp4"></video>
+  
+    <ion-grid>
+      <ion-row align-items-center>
+        <ion-col><div></div></ion-col>
+        <ion-col col-md-4 col-sm-6 col-10 center text-center>
+          <div class="row-div logo-div">
+            <img src="../../assets/imgs/logo.png" alt="" />
+          </div>
+          <div class="row-div">
+            <button ion-button block outline (click)="signup()" class="signup-btn">Sign up</button>
+          </div>
+          <div class="row-div">
+            <button ion-button block outline (click)="login()" class="default-btn">Log in</button>
+          </div>
+        </ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  

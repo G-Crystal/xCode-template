@@ -1,3 +1,35 @@
 page-home {
+    ion-content {
+        div.scroll-content {
+            display: flex!important;
+            align-content: center!important;
+            align-items: center!important;
+        }
+        
+        div.row-div {
+            margin: 8px 0;
+        }
 
+        div.logo-div {
+            margin-bottom: 25px;
+        }
+
+        ion-input {
+            background: white;
+            margin: 8px 0;
+            border: 1px solid #f8f8f8;
+        }
+
+        button.signup-btn {
+            color: #2E2D2D;
+            background: #FFFFFF !important;
+            border: 1px solid #4d4d4d;
+        }
+        button.signup-btn:hover {
+            background: #F0F0F0 !important;
+        }
+        button.signup-btn:active {
+            background: #E0E0E0 !important;
+        }
+    }
 }
