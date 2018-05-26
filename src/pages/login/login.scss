@@ -1,35 +1,9 @@
 page-login {
     ion-content {
-        div.scroll-content {
-            display: flex!important;
-            align-content: center!important;
-            align-items: center!important;
-        }
-
-        video {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -100;
-            transform: translateX(-50%) translateY(-50%);
-        }
-        
         div.row-div {
-            margin: 8px 0;
-
             a {
                 cursor: pointer;
             }
-        }
-
-        ion-input {
-            background: white;
-            margin: 8px 0;
-            border: 1px solid #f8f8f8;
         }
 
         ion-col.lbl-col {

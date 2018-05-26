@@ -47,6 +47,13 @@ ion-content {
         button.default-btn:active {
             background: #1055CF !important;
         }
+
+        .item-md.item-block .item-inner {
+            border-bottom: 0px;
+            &:active, &:focus {
+                border-bottom: 0px;
+            }            
+        }
     }
 
     div.logo-div {
@@ -55,7 +62,5 @@ ion-content {
 
     ion-input {
         background: white;
-        margin: 8px 0;
-        border: 1px solid #f8f8f8;
     }
 }
