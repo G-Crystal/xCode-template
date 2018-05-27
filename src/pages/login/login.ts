@@ -31,9 +31,6 @@ export class LoginPage implements OnInit {
     formBuilder: FormBuilder, 
     private dataService: DataService
   ) {
-    let email = navParams.get('email');
-    let password = navParams.get('password');
-
     // Create the form and define fields and validators.
     this.loginform = formBuilder.group({
       loginform: ['', Validators.pattern('[0-9]{8}/[0-9]{2}')]
@@ -62,15 +59,9 @@ export class LoginPage implements OnInit {
       password: this.loginform.get('password').value //"aaaabbbb"
     }
     
-    // this.dataService.login(data as LoginData)
-    // .subscribe((data) => {
-    //   this.navCtrl.push(WelcomePage);
-    // }, error => {
-    //   console.log(JSON.stringify(error.json()));
-    // });
     this.dataService.login(data as LoginData)
     .subscribe(
-      data => {debugger;
+      data => {
         this.navCtrl.push(WelcomePage);
       }, error => {
         switch(error.status) {
