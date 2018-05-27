@@ -18,14 +18,13 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  // login():Observable<LoginPage[]>{
-  //   return this._http.get(apiUrl).map(r => <LoginPage[]>r.json());
-  // }
-
   login (data: LoginData): Observable<LoginData> {
     return this.http.post<LoginData>(this.apiUrl, data, httpOptions).pipe(
-      tap(_ => this.log(`login success`)),
-      catchError(this.handleError<LoginData>('login'))
+      tap((data) => {
+        this.log(`login success`)
+      })
+      // tap(_ => this.log(`login success`)),
+      // catchError(this.handleError<LoginData>('login'))
     );
   }
   
@@ -37,12 +36,11 @@ export class DataService {
    */
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      let log = this.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

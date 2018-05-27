@@ -4,6 +4,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { WelcomePage } from '../welcome/welcome';
 import { ForgotPage } from '../forgot/forgot';
 import { SignupPage } from '../signup/signup';
+import { LoginData } from '../../app/data';
+import { DataService } from '../../app/data.service';
 
 /**
  * Generated class for the LoginPage page.
@@ -16,20 +18,22 @@ import { SignupPage } from '../signup/signup';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
+  providers: [LoginData, DataService]
 })
 
 export class LoginPage implements OnInit {
   loginform : FormGroup;
-  userData = { "email": "", "password": "" };
+  userData = { "siteName": "xCoins","email": "", "password": "" };
+  
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    formBuilder: FormBuilder, 
+    private dataService: DataService
+  ) {
+    let email = navParams.get('email');
+    let password = navParams.get('password');
 
-  // Validation error messages that will be displayed for each form field with errors.
-  validation_messages = {
-    'email': [
-      { type: 'pattern', message: 'Please enter a number like 12345678/00.' }
-    ]
-  }
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, formBuilder: FormBuilder) {
     // Create the form and define fields and validators.
     this.loginform = formBuilder.group({
       loginform: ['', Validators.pattern('[0-9]{8}/[0-9]{2}')]
@@ -48,8 +52,38 @@ export class LoginPage implements OnInit {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  login(){
-    this.navCtrl.push(WelcomePage);
+  login() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    let data = {
+      siteName: "xCoins",
+      login: this.loginform.get('email').value, //"test1234567",
+      password: this.loginform.get('password').value //"aaaabbbb"
+    }
+    
+    // this.dataService.login(data as LoginData)
+    // .subscribe((data) => {
+    //   this.navCtrl.push(WelcomePage);
+    // }, error => {
+    //   console.log(JSON.stringify(error.json()));
+    // });
+    this.dataService.login(data as LoginData)
+    .subscribe(
+      data => {debugger;
+        this.navCtrl.push(WelcomePage);
+      }, error => {
+        switch(error.status) {
+          case 401: //Unauthoried
+            break;
+          case 403: //Forbidden
+            break;
+          case 500: //Internal error
+            break;
+        }
+      }
+    );
+
   }
 
   signup(){
