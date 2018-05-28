@@ -6,6 +6,8 @@ import { ForgotPage } from '../forgot/forgot';
 import { SignupPage } from '../signup/signup';
 import { LoginData } from '../../app/data';
 import { DataService } from '../../app/data.service';
+import { Message } from 'primeng/components/common/api';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 /**
  * Generated class for the LoginPage page.
@@ -18,18 +20,20 @@ import { DataService } from '../../app/data.service';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-  providers: [LoginData, DataService]
+  providers: [LoginData, DataService, MessageService]
 })
 
 export class LoginPage implements OnInit {
   loginform : FormGroup;
   userData = { "siteName": "xCoins","email": "", "password": "" };
-  
+  msgs: Message[] = [];
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
     formBuilder: FormBuilder, 
-    private dataService: DataService
+    private dataService: DataService,
+    private messageService: MessageService
   ) {
     // Create the form and define fields and validators.
     this.loginform = formBuilder.group({
@@ -50,8 +54,7 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    this.msgs = [];
 
     let data = {
       siteName: "xCoins",
@@ -66,12 +69,19 @@ export class LoginPage implements OnInit {
       }, error => {
         switch(error.status) {
           case 401: //Unauthoried
+            this.messageService.add({severity:'error', summary:error.statusText, detail:error.message});
             break;
           case 403: //Forbidden
+            this.messageService.add({severity:'error', summary:error.statusText, detail:error.message});
             break;
           case 500: //Internal error
+            this.messageService.add({severity:'error', summary:error.statusText, detail:error.message});
+            break;
+          default:
+            this.messageService.add({severity:'error', summary:error.statusText, detail:error.message});
             break;
         }
+        this.msgs.push({severity:'error', summary:'Error Message', detail:'Validation failed'});
       }
     );
 
