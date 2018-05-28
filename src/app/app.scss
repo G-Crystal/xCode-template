@@ -84,5 +84,24 @@ p-messages {
         color: #55616E;
         background-color: #ECB0C2;
         border-color: #ECB0C2;
+
+        a.ui-messages-close {
+            font-size: 20px;
+            color: #FFFFFF !important;
+            line-height: 25px;
+            width: 25px;
+            height: auto;
+            border-radius: 13px;
+        }
+        a.ui-messages-close:hover {
+            background-color: #EF93AF;
+        }
+        a.ui-messages-close:active {
+            background-color: #F36C95;
+        }
+        span.ui-messages-icon {
+            width: 100%;
+            margin-bottom: 10px;
+        }
     }
 }
