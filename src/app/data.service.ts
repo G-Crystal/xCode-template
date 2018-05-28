@@ -12,12 +12,26 @@ const httpOptions = {
 @Injectable()
 export class DataService {
 
-  private apiUrl = 'http://13.56.148.150:5000/api/User/Login';
+  private login_apiUrl = 'http://13.56.148.150:5000/api/User/Login';
+  private signup_apiUrl = 'http://13.56.148.150:5000/api/User/Login';
+  private forgot_apiUrl = 'http://13.56.148.150:5000/api/User/Login';
 
   constructor(private http: HttpClient) { }
 
   login (data: LoginData): Observable<LoginData> {
-    return this.http.post<LoginData>(this.apiUrl, data, httpOptions).pipe(
+    return this.http.post<LoginData>(this.login_apiUrl, data, httpOptions).pipe(
+      tap((data) => {})
+    );
+  }
+
+  signup (data: LoginData): Observable<LoginData> {
+    return this.http.post<LoginData>(this.signup_apiUrl, data, httpOptions).pipe(
+      tap((data) => {})
+    );
+  }
+  
+  forgot (data: LoginData): Observable<LoginData> {
+    return this.http.post<LoginData>(this.forgot_apiUrl, data, httpOptions).pipe(
       tap((data) => {})
     );
   }
