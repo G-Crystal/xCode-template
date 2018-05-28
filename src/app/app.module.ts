@@ -4,7 +4,6 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { LoginData } from './data';
 import { DataService } from './data.service';
-import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';

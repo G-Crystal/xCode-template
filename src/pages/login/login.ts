@@ -69,19 +69,18 @@ export class LoginPage implements OnInit {
       }, error => {
         switch(error.status) {
           case 401: //Unauthoried
-            this.messageService.add({severity:'error', summary:error.statusText, detail:'Email / password combination is not valid. Please try again'});
+            this.messageService.add({severity:'warn', summary:error.statusText, detail:'Email / password combination is not valid. Please try again'});
             break;
           case 403: //Forbidden
-            this.messageService.add({severity:'error', summary:error.statusText, detail:error.message});
+            this.messageService.add({severity:'warn', summary:error.statusText, detail:error.message});
             break;
           case 500: //Internal error
-            this.messageService.add({severity:'error', summary:error.statusText, detail:error.message});
+            this.messageService.add({severity:'warn', summary:error.statusText, detail:'It may be busy or temporarily unavailable.'});
             break;
           default:
-            this.messageService.add({severity:'error', summary:error.statusText, detail:'It may be busy or temporarily unavailable.'});
+            this.messageService.add({severity:'warn', summary:error.statusText, detail:error.message});
             break;
         }
-        this.msgs.push({severity:'error', summary:'Error Message', detail:'Validation failed'});
       }
     );
 

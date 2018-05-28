@@ -68,3 +68,21 @@ ion-content {
         background: white;
     }
 }
+
+p-messages {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    z-index: inherit;
+    text-align: center;
+
+    div.ui-messages {
+        margin: 0;
+    }
+    
+    div.ui-messages-warn {
+        color: #55616E;
+        background-color: #ECB0C2;
+        border-color: #ECB0C2;
+    }
+}
