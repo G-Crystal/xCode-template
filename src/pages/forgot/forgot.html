@@ -4,15 +4,48 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
 
-  <ion-navbar>
-    <ion-title>forgot</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
+<p-messages [(value)]="msgs"></p-messages>
 
 <ion-content padding>
+  <video autoplay loop src="../../assets/imgs/background-video.mp4"></video>
 
+  <ion-grid>
+    <ion-row align-items-center justify-content-center>
+      <ion-col col-xl-2 col-lg-3 col-md-6 col-sm-8 col-xs-10 center text-center>
+        <form novalidate [formGroup]="forgotform">
+          <div class="row-div">
+            <img src="../../assets/imgs/logo.png" alt="" />
+          </div>
+
+          <div class="row-div">
+            <ion-item no-lines *ngIf="( forgotform.get('email').hasError('minlength') || forgotform.get('email').hasError('pattern') || forgotform.get('email').hasError('required') ) && forgotform.get('email').touched">
+              <div class="error" *ngIf="forgotform.get('email').hasError('required') && forgotform.get('email').touched">
+                Please input your email
+              </div>
+              <div class="error" *ngIf="forgotform.get('email').hasError('pattern') && forgotform.get('email').touched">
+                Email address invalid
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-label color="primary"><ion-icon name="md-person"></ion-icon></ion-label>
+              <!-- <ion-input type="text" placeholder="Name@email.com" formControlName="email" required></ion-input> -->
+              <ion-input type="text" [(ngModel)]="email" placeholder="Name@email.com" formControlName="email" [class.error1]="!forgotform.controls.email.valid && forgotform.controls.email.dirty"></ion-input>
+            </ion-item>
+          </div>
+
+          <div class="row-div">
+            <button ion-button block outline color="lightText" (click)="send()" class="default-btn">Send</button>
+          </div>
+          
+          <div class="row-div">
+            <ion-row>
+              <ion-col justify-content-end class='a-col'><a (click)="login()">Log in</a></ion-col>
+              <ion-col justify-content-end class='a-col'><a (click)="signup()">Sign up</a></ion-col>
+            </ion-row>
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
