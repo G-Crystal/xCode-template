@@ -1,3 +1,16 @@
 page-signup {
+    ion-content {
+        div.row-div {
+            a {
+                cursor: pointer;
+            }
+        }
 
+        ion-col.lbl-col {
+            text-align: left;
+        }
+        ion-col.a-col {
+            text-align: right;
+        }
+    }
 }

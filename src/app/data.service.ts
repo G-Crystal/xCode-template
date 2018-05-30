@@ -13,8 +13,8 @@ const httpOptions = {
 export class DataService {
 
   private login_apiUrl = 'http://13.56.148.150:5000/api/User/Login';
-  private signup_apiUrl = 'http://13.56.148.150:5000/api/User/Login';
-  private forgot_apiUrl = 'http://13.56.148.150:5000/api/User/Login';
+  private signup_apiUrl = 'http://13.56.148.150:5000/api/User/Signup';
+  private forgot_apiUrl = 'http://13.56.148.150:5000/api/User/Forgot';
 
   constructor(private http: HttpClient) { }
 
