@@ -29,7 +29,6 @@
             </ion-item>
             <ion-item>
               <ion-label color="primary"><ion-icon name="md-person"></ion-icon></ion-label>
-              <!-- <ion-input type="text" placeholder="Name@email.com" formControlName="email" required></ion-input> -->
               <ion-input type="text" [(ngModel)]="email" placeholder="Name@email.com" formControlName="email" [class.error1]="!signupform.controls.email.valid && signupform.controls.email.dirty"></ion-input>
             </ion-item>
           </div>
@@ -48,8 +47,22 @@
             </ion-item>
             <ion-item>
               <ion-label color="primary"><ion-icon name="lock"></ion-icon></ion-label>
-              <!-- <ion-input type="password" placeholder="Password" formControlName="password" required></ion-input> -->
               <ion-input type="password" [(ngModel)]="password" placeholder="Password" formControlName="password" [class.error1]="!signupform.controls.password.valid && signupform.controls.password.dirty"></ion-input>
+            </ion-item>
+          </div>
+
+          <div class="row-div">
+            <ion-item no-lines *ngIf="( signupform.get('cfm_password').hasError('minlength') || signupform.get('cfm_password').hasError('maxlength') || signupform.get('cfm_password').hasError('required') ) && signupform.get('cfm_password').touched">
+              <div class="error" *ngIf="signupform.get('cfm_password').hasError('required') && signupform.get('cfm_password').touched">
+                Please input your confirm password
+              </div>
+              <div class="error" *ngIf="signupform.get('cfm_password').hasError('required') && signupform.get('cfm_password').touched && signupform.controls.password.value != signupform.controls.cfm_password.value">
+                Password doesn't match
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-label color="primary"><ion-icon name="lock"></ion-icon></ion-label>
+              <ion-input type="cfm_password" [(ngModel)]="cfm_password" placeholder="Confirm Password" formControlName="cfm_password" [class.error1]="!signupform.controls.cfm_password.valid && signupform.controls.cfm_password.dirty"></ion-input>
             </ion-item>
           </div>
 

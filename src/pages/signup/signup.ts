@@ -25,7 +25,6 @@ import { MessageService } from 'primeng/components/common/messageservice';
 
 export class SignupPage {
   signupform : FormGroup;
-  msgs: Message[] = [];
 
   constructor(
     public navCtrl: NavController, 
@@ -34,6 +33,10 @@ export class SignupPage {
     private dataService: DataService,
     private messageService: MessageService
   ) {
+    // Create the form and define fields and validators.
+    this.signupform = formBuilder.group({
+      signupform: ['', Validators.pattern('[0-9]{8}/[0-9]{2}')]
+    });
   }
 
   ngOnInit() {
@@ -41,6 +44,7 @@ export class SignupPage {
     this.signupform = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
       password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      cfm_password: new FormControl('', [Validators.required, Validators.minLength(6)]),
     });
   }
 
@@ -49,8 +53,6 @@ export class SignupPage {
   }
 
   signup() {
-    this.msgs = [];
-    
     let data = {
       siteName: "xCoins",
       login: "test1234567",
